@@ -86,4 +86,4 @@ However, when we are looking at the bleu score we can see, that th t5 model give
 
 ![bleu.png](figures/bleu.png)
 
-See the final result in my final [solution report](https://www.notion.so/Detoxification-Task-f978e900e9784df78e1baf34a3d94af8?pvs=21).
+See the final result in my final [solution report]((https://github.com/Lumiwarum/detoxification/blob/main/reports/final%20solution.md)).
