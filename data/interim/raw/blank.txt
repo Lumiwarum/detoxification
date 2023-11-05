@@ -1,0 +1,1 @@
+This empty file is needed to preserve the folder. The actual data can be downloaded there by runing the download_dataset.py file
