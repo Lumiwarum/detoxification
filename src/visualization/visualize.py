@@ -5,6 +5,7 @@ import numpy as np
 from datasets import load_dataset, load_metric
 
 import matplotlib.pyplot as plt
+from wordcloud import WordCloud
 
 
 data_path = "../../data/interim/"
@@ -62,6 +63,7 @@ t5_toxicity, t5_bleu = get_metrics(df_t5)
 skl_toxicity, skl_bleu = get_metrics(df_skl)
 
 
+# plot toxicity scores
 plt.plot(np.cumsum(orig_toxicity), color = 'red', label = "original")
 plt.plot(np.cumsum(t5_toxicity), color = 'yellow', label ="t5_small")
 plt.plot(np.cumsum(flan_toxicity), color = 'g', label = "flan")
@@ -72,4 +74,39 @@ plt.ylabel("Toxicity cumsum")
 plt.title("Toxicity of models output")
 plt.savefig("../../reports/figures/toxicity.png")
 plt.show()
+plt.close()
+
+# plot sacreblue score
+plt.plot(np.cumsum(t5_bleu), color = 'yellow', label ="t5_small")
+plt.plot(np.cumsum(flan_bleu), color = 'g', label = "flan")
+plt.plot(np.cumsum(skl_bleu), color = 'b', label ="skolkovo")
+plt.legend()
+plt.xlabel("N sentences")
+plt.ylabel("BLEU score cumsum")
+plt.title("BLEU score of models output")
+plt.savefig("../../reports/figures/blue.png")
+plt.show()
+
+def plot_cloud(df: pd.DataFrame, name: str):
+    """
+    A function to plot word clouds
+    args:
+        df: pandas dataframe from which to take the sentences
+        name: a name of the dataframe to save the png correctly
+    """
+    ref_text = ' '.join(df['0'])
+    wordcloud = WordCloud(width=800, height=400, max_words=200, background_color='white').generate(ref_text)
+
+
+    plt.figure(figsize=(10, 5))
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis('off')
+    plt.savefig("../../reports/figures/"+name+".png")
+    plt.show()
+
+
+plot_cloud(df_orig,"original")
+plot_cloud(df_flan,"flan")
+plot_cloud(df_t5,"t5-small")
+plot_cloud(df_skl,"skolkovo")
 
