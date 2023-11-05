@@ -46,19 +46,14 @@ source_lang = "toxic"
 target_lang = "detoxified"
 padding = "max_length"
 
-def preprocess_function(examples):
-    inputs = [prefix + ex for ex in examples["text"]]
-    targets = [ex for ex in examples["target"]]
-
-    model_inputs = tokenizer(inputs, max_length=max_input_length, padding='longest')
-    print(model_inputs)
-    # Setup the tokenizer for targets
-    labels = tokenizer(targets, max_length=max_target_length, padding='longest')
-
-    model_inputs["labels"] = labels["input_ids"]
-    return model_inputs
 
 def preprocess_function(examples):
+    """
+    This function tokenizes all words in a given batch
+
+    Args:
+        examples: a batch of n samples from the raw dataset
+    """
     inputs = [prefix + doc for doc in examples["text"]]
     model_inputs = tokenizer(inputs, max_length=max_input_length, truncation=True)
 
