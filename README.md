@@ -69,28 +69,32 @@ detoxification
         └── visualize.py
 ```
 
-The structure was taken from [here](https://www.notion.so/Task-description-588e0cb88be4416ea7311426b1d9b360?pvs=21)
+The structure was taken from [here](https://github.com/Lumiwarum/detoxification/blob/main/Task%20description.md)
 
-[Notebooks](https://www.notion.so/notebooks/) folder contains all the .ipynb file that I used during the research process
+[Notebooks](https://github.com/Lumiwarum/detoxification/tree/main/notebooks) folder contains all the .ipynb file that I used during the research process
 
-[The report](https://www.notion.so/Solution-Building-33f0b7d8aced43118f38d369a50fd137?pvs=21) about baseline and how I have approached the problem
+[The report](https://github.com/Lumiwarum/detoxification/blob/main/reports/Solution%20Building.md) about searching for the solution
 
-[The report](https://www.notion.so/Final-Solution-a493a971f44a4ed8a85d203a366e7880?pvs=21) about my final model and overall evaluation is here
+[The report](https://github.com/Lumiwarum/detoxification/blob/main/reports/final%20solution.md) about my final model and overall evaluation is here
 
 ## Usage:
 
 ### Data processing:
 
-1. [src/data/download_dataset.py](https://www.notion.so/Detoxification-Task-f978e900e9784df78e1baf34a3d94af8?pvs=21) - downloads the dataset and extracts it into `data/raw` directory.
-2. [src/data/make_datasets.py](https://www.notion.so/Detoxification-Task-f978e900e9784df78e1baf34a3d94af8?pvs=21) - uses the download_dataset.py script and create a cropped processed dataset described in the reports
+1. [src/data/download_dataset.py](https://github.com/Lumiwarum/detoxification/blob/main/src/data/download_dataset.py) - downloads the dataset and extracts it into `data/raw` directory.
+2. [src/data/make_datasets.py](https://github.com/Lumiwarum/detoxification/blob/main/src/data/make_datasets.py) - uses the download_dataset.py script and create a cropped processed dataset described in the reports
 
 ### Train model:
 
-[src/models/train_model.py](https://www.notion.so/Detoxification-Task-f978e900e9784df78e1baf34a3d94af8?pvs=21) - fine-tunes the t5 from Skolkovo on the dataset made by make_dataset.py
+[src/models/train_model.py](https://github.com/Lumiwarum/detoxification/blob/main/src/models/train_model.py) - fine-tunes the t5 from Skolkovo on the dataset made by make_dataset.py
 
 ### Predict:
 
-[src/models/predict_model.py](https://www.notion.so/Task-description-588e0cb88be4416ea7311426b1d9b360?pvs=21) - allows you to run the model for detoxifying your sentence. If the model is not fine-tuned - the default model will be from the Skolkovo versio
+[src/models/predict_model.py](https://github.com/Lumiwarum/detoxification/blob/main/src/models/predict_model.py) - allows you to run the model for detoxifying your sentence. If the model is not fine-tuned - the default model will be from the Skolkovo versio
+
+### Visualize:
+
+[src/visualization/visualize.py](https://github.com/Lumiwarum/detoxification/blob/main/src/visualization/visualize.py) - allows to make figures from the intermediate dataset that are used in the reports
 
 [Solution Building](https://www.notion.so/Solution-Building-33f0b7d8aced43118f38d369a50fd137?pvs=21)
 
